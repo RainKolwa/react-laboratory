@@ -28,15 +28,16 @@ let App = React.createClass({
 		let that = this;
 		let page = that.state.currentPage;
 		$.ajax({
-			url: 'http://www.xinxinjiazhang.com/api/v1/post',
+			url: 'http://test.xinxinjiazhang.com/api/v1/post',
 			type: 'GET',
 			dataType: 'json',
-			data: {page: page,type: 'article', per_page: 10},
+			data: {page: page,type: 'event', per_page: 10},
 			beforeSend: function(){
 				that.setState({ loading: true })
 			},
 			success: function(result){
 				console.log(result);
+				if(result.length == 0) return;
 				let currentItems = that.state.items;
 				let currentPage = that.state.currentPage + 1;
 				for(let i = 0; i < result.length; i++){
@@ -51,7 +52,6 @@ let App = React.createClass({
 		})
 	},
 	_renderItems: function(){
-		console.log(this.state.items)
 		return this.state.items.map(function(obj, index) {
 			// ... generate list items here ...
 			return (
