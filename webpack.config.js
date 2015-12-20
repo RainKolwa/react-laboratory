@@ -5,7 +5,7 @@ module.exports = {
     entry: [
     	"webpack-dev-server/client?http://localhost:3000/",
     	"webpack/hot/only-dev-server",
-    	"./app.jsx"
+    	"./index"
     ],
     output: {
         path: __dirname + "/dist",
@@ -15,9 +15,12 @@ module.exports = {
     plugins: [
 		new webpack.HotModuleReplacementPlugin()
 	],
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
     module: {
 		loaders: [
-			{ test: /\.jsx$/, exclude: /node_modules/, loader: "babel-loader"}
+			{ test: /\.jsx$/, exclude: /node_modules/, loaders: ["react-hot", "babel-loader"]}
 		]
 	}
 }
