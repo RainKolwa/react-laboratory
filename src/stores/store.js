@@ -1,5 +1,6 @@
 import Reflux from 'reflux';
 import Actions from '../actions/action';
+import _ from 'lodash';
 
 const db = {};
 
@@ -14,17 +15,18 @@ const Store = Reflux.createStore({
     	//
     	let self = this; // ajax here
 		db.list = [
-			{id: 1, title: '测试标题'},
-			{id: 2, title: '测试标题2'}
+			{id: '1', title: '测试标题'},
+			{id: '2', title: '测试标题2'}
 		];
 		self.trigger(db.list);	
 	},
 	onFetchBaseInfo (id){
-		console.log(db.list);
-
+		let requestId = id;
+		let title = _.result(_.find(db.list, 'id', id), 'title');
+		
 		this.trigger({
-			id: 1,
-			title: '测试标题'
+			id: id,
+			title: title
 		})
 	}
 })

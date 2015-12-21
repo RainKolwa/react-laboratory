@@ -11,7 +11,7 @@ const Post = React.createClass({
 		}
 	},
 	componentDidMount() {
-		Actions.fetchBaseInfo(1);
+		Actions.fetchBaseInfo(this.props.params.id);
 	},
 	render() {
 		return (
