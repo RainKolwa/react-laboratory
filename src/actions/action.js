@@ -1,7 +1,8 @@
 import Reflux from 'reflux';
 
 const Actions = Reflux.createActions([
-	"fetchList"
+	"fetchList",
+	"fetchBaseInfo"
 ])
 
 export default Actions;
