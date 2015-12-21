@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router';
 import Reflux from 'reflux';
 import Store from '../stores/store';
 import Actions from '../actions/action';
+import PostItem from './PostItem';
 
 const PostList = React.createClass({
 	mixins: [Reflux.connect(Store, "list")],
@@ -27,16 +27,6 @@ const PostList = React.createClass({
 			</ul>
 		)
 	}	
-})
-
-const PostItem = React.createClass({
-	render() {
-		return (
-			<li key={this.props.key}>
-				<Link to={'/list/' + this.props.id}>{this.props.title}</Link>
-			</li>
-		)
-	}
 })
 
 export default PostList;
